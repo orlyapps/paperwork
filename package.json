@@ -4,8 +4,9 @@
   "description": "Dokument-Generator für Angebote, Rechnungen und Verträge",
   "private": true,
   "scripts": {
-    "build": "./create-document.sh all",
-    "build:test": "./create-document.sh test"
+    "doc": "./scripts/create-document.sh",
+    "build": "./scripts/create-document.sh all",
+    "test:pdf": "./scripts/create-document.sh test"
   },
   "dependencies": {
     "jsdom": "^26.0.0"

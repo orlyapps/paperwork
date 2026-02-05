@@ -1,12 +1,16 @@
 #!/bin/bash
 
 # Dokument-Generator für Orlyapps
-# Usage: ./create-document.sh <dokumentname>
-#        ./create-document.sh test
-#        ./create-document.sh all
+# Usage: npm run doc -- <dokumentname>
+#        npm run doc -- test
+#        npm run doc -- all
 
-# Verzeichnis des Scripts ermitteln
+# Verzeichnis des Scripts und Projekt-Root ermitteln
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# In Projekt-Root wechseln
+cd "$ROOT_DIR"
 
 # Ordner erstellen falls nicht vorhanden
 mkdir -p documents output
@@ -61,7 +65,7 @@ fi
 
 # Test-Modus: Template testen
 if [ "$1" = "test" ]; then
-    cp template.html documents/_test.html
+    cp src/template.html documents/_test.html
     build_pdf documents/_test.html output/_test.pdf
     rm documents/_test.html
     echo "✓ Test-PDF erstellt: output/_test.pdf"
@@ -70,16 +74,16 @@ if [ "$1" = "test" ]; then
 fi
 
 if [ -z "$1" ]; then
-    echo "Usage: ./create-document.sh <dokumentname>"
-    echo "       ./create-document.sh test"
-    echo "       ./create-document.sh all"
+    echo "Usage: npm run doc -- <dokumentname>"
+    echo "       npm run doc -- test"
+    echo "       npm run doc -- all"
     echo ""
     echo "Beispiele:"
-    echo "  ./create-document.sh ANG-2026-002      # Neues Angebot"
-    echo "  ./create-document.sh RE-2026-001      # Neue Rechnung"
-    echo "  ./create-document.sh Vertrag-Kunde    # Neuer Vertrag"
-    echo "  ./create-document.sh test             # Template testen"
-    echo "  ./create-document.sh all              # Alle Dokumente als PDF generieren"
+    echo "  npm run doc -- ANG-2026-002      # Neues Angebot"
+    echo "  npm run doc -- RE-2026-001       # Neue Rechnung"
+    echo "  npm run doc -- Vertrag-Kunde     # Neuer Vertrag"
+    echo "  npm run doc -- test              # Template testen"
+    echo "  npm run doc -- all               # Alle Dokumente als PDF generieren"
     exit 1
 fi
 
@@ -89,7 +93,7 @@ PDF_FILE="output/${DOC_NAME}.pdf"
 
 # Template kopieren oder PDF generieren
 if [ ! -f "$HTML_FILE" ]; then
-    cp template.html "$HTML_FILE"
+    cp src/template.html "$HTML_FILE"
     echo "✓ Dokument erstellt: $HTML_FILE"
     echo "  → Bitte bearbeiten und dann erneut ausführen"
 else

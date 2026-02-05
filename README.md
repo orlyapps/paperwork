@@ -31,10 +31,13 @@ npm install
 ├── fonts/               # Schriftarten
 │   └── FiraSans-*.ttf
 ├── output/              # Generierte PDFs
-├── template.html        # HTML-Vorlage
-├── template.css         # CSS-Styles
-├── calculate-sums.js    # Automatische Summenberechnung
-└── create-document.sh   # Build-Script
+├── scripts/             # Build-Scripts
+│   ├── create-document.sh
+│   └── calculate-sums.js
+├── src/                 # Templates und Styles
+│   ├── template.html    # HTML-Vorlage
+│   └── template.css     # CSS-Styles
+└── package.json
 ```
 
 ## Neues Dokument erstellen
@@ -42,7 +45,7 @@ npm install
 ### 1. Template kopieren
 
 ```bash
-./create-document.sh ANG-2026-XXX
+npm run doc -- ANG-2026-XXX
 ```
 
 ### 2. Dokument bearbeiten
@@ -58,22 +61,22 @@ In der HTML-Datei anpassen:
 ### 3. PDF generieren
 
 ```bash
-./create-document.sh ANG-2026-XXX
+npm run doc -- ANG-2026-XXX
 ```
 
 ## Schnellbefehle
 
 ```bash
 # Einzelnes Dokument erstellen/aktualisieren
-./create-document.sh ANG-2026-002    # Angebot
-./create-document.sh RE-2026-001     # Rechnung
-./create-document.sh Vertrag-Kunde   # Vertrag
+npm run doc -- ANG-2026-002    # Angebot
+npm run doc -- RE-2026-001     # Rechnung
+npm run doc -- Vertrag-Kunde   # Vertrag
 
 # Template testen
-./create-document.sh test
+npm run test:pdf
 
 # Alle Dokumente als PDF generieren
-./create-document.sh all
+npm run build
 ```
 
 ## Automatische Summenberechnung
