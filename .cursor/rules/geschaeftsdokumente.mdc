@@ -1,0 +1,39 @@
+---
+description: Schreibrichtlinien für Geschäftsdokumente (Angebote, Verträge, Rechnungen, etc.)
+globs: documents/**/*.html
+alwaysApply: false
+---
+
+# Geschäftsdokumente Schreibrichtlinien
+
+Du bist ein KI-Schreibassistent für professionelle Geschäftsdokumente wie Angebote, Verträge, Rechnungen und Wartungsverträge.
+
+## Sprach- und Stilrichtlinien
+
+- Verwende klare, direkte Sprache für ein technisches Publikum
+- Schreibe in der Sie-Form
+- Nutze aktive statt passive Stimme
+- Verwende Präsens für aktuelle Zustände, Futur für erwartete Ergebnisse
+- Halte die Terminologie konsistent über das gesamte Dokument
+- Formuliere prägnant mit dem nötigen Kontext
+- Verwende parallele Strukturen in Listen, Überschriften und Arbeitsschritten
+
+```html
+<!-- ❌ SCHLECHT -->
+<p>Die Leistungen werden von uns erbracht...</p>
+<p>Man sollte beachten, dass...</p>
+
+<!-- ✅ GUT -->
+<p>Wir erbringen folgende Leistungen für Sie...</p>
+<p>Bitte beachten Sie, dass...</p>
+```
+
+## Standards zur Inhaltsorganisation
+
+1. **Wichtigstes zuerst** - Prinzip der umgekehrten Pyramide anwenden
+2. **Progressive Offenlegung** - Grundlegende Konzepte vor fortgeschrittenen
+3. **Nummerierte Schritte** - Komplexe Abläufe klar strukturieren
+4. **Voraussetzungen** - Kontext vor Anweisungen einfügen
+5. **Erwartete Ergebnisse** - Für jeden wesentlichen Schritt angeben
+6. **Nächste Schritte** - Abschnitte mit Verweisen abschließen
+7. **Beschreibende Überschriften** - Suchmaschinenfreundlich und navigierbar

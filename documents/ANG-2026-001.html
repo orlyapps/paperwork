@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <link href="../template.css" rel="stylesheet">
+    <title>Angebot</title>
+    <meta name="description" content="Angebots-Template">
+  </head>
+
+  <body>
+    <!-- DECKBLATT -->
+    <article id="cover">
+      <img src="../assets/logo.png" alt="Firmenlogo" class="logo">
+
+      <div class="projekt-titel">
+        <h1>Lizard</h1>
+        <p class="untertitel">Angebot für Wartungsvertrag</p>
+      </div>
+
+      <div class="angebot-info">
+        <p><strong>Angebotsnummer:</strong> ANG-2026-001</p>
+        <p><strong>Datum:</strong> 05. Februar 2026</p>
+        <p><strong>Gültig bis:</strong> 05. März 2026</p>
+      </div>
+
+      <div class="adressen">
+        <address class="absender">
+          <strong>Absender</strong>
+          Orlyapps - Janzen & Strauß GbR
+          Azaleenweg 29
+          26160 Bad Zwischenahn
+          Tel: +49 441 180 29 666
+          info@orlyapps.de
+        </address>
+        <address class="empfaenger">
+          <strong>Empfänger</strong>
+          Wolf & Strauss Solutions GmbH & Co. KG
+          Mittelbreede 16
+          33719 Bielefeld
+          Ansprechpartner: Bastian Strauß
+        </address>
+      </div>
+    </article>
+
+    <!-- ANSCHREIBEN -->
+    <article id="anschreiben">
+      <div class="brief-kopf">
+        <address class="brief-empfaenger">
+          Wolf & Strauss Solutions GmbH & Co. KG<br>
+          Bastian Strauß<br>
+          Mittelbreede 16<br>
+          33719 Bielefeld
+        </address>
+        <p class="brief-datum">Bad Zwischenahn, 05. Februar 2026</p>
+      </div>
+
+      <p class="brief-betreff"><strong>Angebot: Lizard – Wartungsvertrag</strong></p>
+
+      <p class="anrede">Sehr geehrter Herr Strauß,</p>
+
+      <p>
+        Bezugnehmend auf unsere Gespräche möchten wir Ihnen nachfolgend unser Angebot
+        für einen Wartungsvertrag vorstellen.
+      </p>
+
+      <p>
+        Wir würden uns freuen, wenn unser Angebot Ihren Vorstellungen entspricht und
+        stehen Ihnen für Rückfragen selbstverständlich jederzeit gerne zur Verfügung.
+      </p>
+
+      <p class="gruss">Mit freundlichen Grüßen</p>
+
+      <p class="unterschrift-absender">
+        <strong>Orlyapps - Janzen & Strauß GbR</strong>
+      </p>
+    </article>
+
+    <!-- LEISTUNGSBESCHREIBUNG -->
+    <article id="leistungsbeschreibung">
+      <h2 id="leistung-title">Leistungsbeschreibung</h2>
+
+      <h3>Vorbemerkung: Warum sollte ich meine Anwendung warten lassen?</h3>
+      <p>
+        Die von uns entwickelte und eingesetzte Software setzt auf eine Vielzahl von branchenweit
+        etablierten und stabilen Software-Komponenten. Diese müssen aus zwei Gründen zwangsläufig
+        regelmäßig aktualisiert werden:
+      </p>
+      <ul>
+        <li><strong>Sicherheit gewährleisten</strong> durch die Installation aktueller Sicherheitsaktualisierungen.</li>
+        <li><strong>Funktionsgleichheit gewährleisten</strong> durch die Nutzung aktueller Versionen.</li>
+      </ul>
+      <p>
+        Software-Komponenten befinden sich stets in Abhängigkeit anderer Komponenten. Sollte unsere
+        Software Sicherheitsaktualisierungen oder Kompatibilitäts-Updates erhalten, müssen daher in der Regel
+        mehrere Komponenten zur selben Zeit aktualisiert werden. Je größer die Zeitspanne, die zwischen
+        der aktuell eingesetzten und der verfügbaren Version liegt, desto umfangreicher fällt letztendlich
+        der Aufwand während einer Aktualisierung aus.
+      </p>
+      <p>
+        Abhängig von der Art der Anwendung empfehlen wir daher – im Sinne einer Kosten- und
+        Aufwandsreduktion – eine halbjährliche oder monatliche Aktualisierung.
+      </p>
+
+      <h3>1. Wartung</h3>
+      <p>
+        Allgemeine Aktualisierung der eingesetzten Komponenten.
+      </p>
+
+      <h4>1.1 Aktualisierung der Open-Source-Komponenten</h4>
+      <p>
+        Wir setzen während der Entwicklung auf frei verfügbare Open-Source-Komponenten. Diese ermöglichen
+        uns die schnellere, kostengünstigere und oft sicherere Entwicklung neuer Funktionen für Sie.
+        Im Backend verwenden wir das verbreitete und beliebte PHP-Framework Laravel. Dieses Framework
+        erhält monatlich Sicherheitsaktualisierungen und jährlich größere Versionssprünge.
+      </p>
+      <p>
+        Wir empfehlen allen Kunden, die neuveröffentlichten Sicherheitsaktualisierungen sofort bei Verfügbarkeit
+        einzuspielen und die jährlichen Versionssprünge zu einem geeigneten Zeitpunkt durchzuführen.
+        Diese bringen neue Funktionen mit und verbessern die Performance der Anwendung.
+      </p>
+
+      <h4>1.2 Fehlerüberwachung</h4>
+      <p>
+        In einer Anwendung können unter bestimmten Bedingungen Fehler auftreten, die während der Testphase
+        nicht entdeckt wurden. Die Masse an verfügbaren Geräten, Softwareversionen und Nutzungsszenarien
+        macht es unmöglich, eine zu 100 % fehlerfreie App zu programmieren. Auch äußere Einflüsse – etwa
+        an Schnittstellen zu anderen Systemen – wirken sich darauf negativ aus. Ein unerwartetes, unter
+        Testszenarien nicht vorhersehbares Verhalten von Nutzern oder eine falsche Eingabe durch Nutzer
+        verursacht ebenfalls gelegentlich kleine oder kritische Fehler.
+      </p>
+      <p>
+        Jede Art von Fehler wird von uns anonymisiert aufgenommen und zu einem zentralen Error Management
+        Tool gesendet (www.bugsnag.com). Diese Meldungen werden von uns täglich überwacht und im Fehlerfall
+        eigenständig oder in Absprache mit Ihnen behoben. Dies stellt kurze Updatezyklen im Fall von
+        Software-Bugs sicher.
+      </p>
+
+      <h3>2. Support & Weiterentwicklung</h3>
+
+      <h4>2.1 Ziel der Zusammenarbeit</h4>
+      <p>
+        Ziel ist die kontinuierliche Weiterentwicklung, Wartung und Optimierung Ihrer Laravel-basierten
+        Anwendung durch einen monatlichen Wartungsvertrag.
+      </p>
+      <p>
+        Statt einzelner Projektangebote oder Stundenabrechnung stellen wir Ihnen fortlaufend unsere
+        Entwicklungskapazität zur Verfügung und setzen Ihre Anforderungen priorisiert und sequenziell um.
+      </p>
+      <p>
+        Sie erhalten planbare Kosten, schnelle Umsetzung und kontinuierliche Ergebnisse.
+      </p>
+
+      <h4>2.2 Leistungsumfang</h4>
+      <p>Im Rahmen des Wartungsvertrags übernehmen wir:</p>
+      <ul>
+        <li>Entwicklung neuer Funktionen (Backend / Frontend / Schnittstellen)</li>
+        <li>Weiterentwicklung bestehender Funktionen</li>
+        <li>Fehlerbehebung</li>
+        <li>Codeoptimierungen & Qualitätsverbesserungen</li>
+        <li>Performance-Optimierungen</li>
+        <li>Technische Beratung & Architekturentscheidungen</li>
+        <li>Bereitstellung & Veröffentlichung von Updates</li>
+        <li>Unterstützung bei dringenden Problemen</li>
+      </ul>
+      <p>
+        Die Aufgaben werden fortlaufend in einer gemeinsamen Aufgabenliste gepflegt und
+        der Reihe nach umgesetzt.
+      </p>
+      <p>
+        Aufgaben werden grundsätzlich in kleine, in sich abgeschlossene Arbeitspakete
+        (typischerweise wenige Tage Umsetzungszeit) unterteilt. Sehr große oder mehrwöchige
+        Anforderungen werden vorab gemeinsam in kleinere Zwischenergebnisse zerlegt.
+      </p>
+
+      <h4>2.3 Arbeitsweise</h4>
+      <p><strong>Ablauf</strong></p>
+      <ol>
+        <li>Sie erfassen Aufgaben in einer priorisierten Liste</li>
+        <li>Wir beginnen mit der höchsten Priorität</li>
+        <li>Aufgaben werden sequenziell (eine nach der anderen) umgesetzt</li>
+        <li>Fertige Ergebnisse werden unmittelbar bereitgestellt</li>
+        <li>Danach folgt die nächste Aufgabe</li>
+      </ol>
+
+      <p><strong>Wichtige Prinzipien</strong></p>
+      <ul>
+        <li>Fokus auf eine oder zwei Aufgaben gleichzeitig</li>
+        <li>Kontinuierliche Lieferung statt großer Releases</li>
+        <li>Keine Stundenabrechnung</li>
+        <li>Messbarer Fortschritt statt Zeiterfassung</li>
+      </ul>
+      <p>
+        Kritische Bugs oder Systemausfälle behandeln wir mit höchster Priorität außerhalb der Warteschlange.
+      </p>
+
+      <h4>2.4 Reaktionszeiten bei Störung in dringenden Fällen</h4>
+
+      <p><strong>Servicezeiten</strong></p>
+      <ul>
+        <li><strong>Montag bis Freitag:</strong> 8:00 bis 16:00 Uhr</li>
+        <li><strong>Samstag:</strong> kein Betrieb</li>
+        <li><strong>Sonn- und Feiertage:</strong> kein Betrieb</li>
+      </ul>
+      <p>Erweiterte Servicezeiten sind auf Anfrage möglich.</p>
+
+      <p><strong>Prioritätsstufe 1</strong></p>
+      <p>
+        Support bei systemrelevanten Fehlern, die die Funktion dahingehend stören, dass der
+        Geschäftsbetrieb beeinträchtigt / gestört ist. Sofortige Reaktion und Analyse, Fehlerbehebung
+        bzw. angemessene Zwischenlösung innerhalb eines Werktages (8 Stunden).
+      </p>
+      <p>
+        <strong>Situation:</strong> Die produktive Nutzung der unter Pflege stehenden Software ist nicht
+        möglich oder so stark beeinträchtigt, dass die Arbeit im Geschäftsbetrieb nicht mehr angemessen
+        fortgesetzt werden kann. Die Nutzbarkeit ist komplett ausgefallen. Der Betrieb ist geschäftskritisch
+        und es liegt ein Notfall vor.
+      </p>
+      <p>Prioritätsstufe 1 hat eines oder mehrere der folgenden Merkmale:</p>
+      <ul>
+        <li>Korrupte Daten</li>
+        <li>Eine für den Kunden geschäftskritische Funktion der Software ist nicht verfügbar</li>
+        <li>Das System hat sich auf unbestimmte Zeit „aufgehängt", verursacht inakzeptable oder unbestimmte Verzögerungen bei Ressourcen oder Reaktionen</li>
+        <li>Das System stürzt ab, auch nach mehrmaligen Neustartversuchen</li>
+      </ul>
+      <p>
+        In diesem Fall werden angemessene Anstrengungen unternommen, um auf Serviceanfragen der
+        Prioritätsstufe 1 standardmäßig innerhalb von 8 Stunden zu reagieren. Die Auswirkungen erfordern
+        ggf. eine Zwischenlösung zur Wiederherstellung der Funktion.
+      </p>
+
+      <p><strong>Prioritätsstufe 2</strong></p>
+      <p>
+        Support bei systemrelevanten Fehlern, die den Geschäftsbetrieb im Wesentlichen einschränken.
+        Reaktion, Analyse innerhalb eines Tages und Fehlerbehebung innerhalb des Folgetages (16 Stunden).
+      </p>
+      <p>
+        <strong>Situation:</strong> Es liegt ein schwerwiegender Ausfall von Software-Funktionalitäten
+        oder des Dienstes vor. Wichtige Funktionen stehen nicht zur Verfügung und es gibt keine akzeptable
+        Zwischenlösung. Das Arbeiten ist jedoch mit einigen Einschränkungen möglich.
+      </p>
+
+      <p><strong>Prioritätsstufe 3</strong></p>
+      <p>
+        Support bei nicht systemrelevanten Fehlern (z.B. geringe Darstellungsfehler, Suchfunktion
+        eingeschränkt, o.ä.), Geschäftsbetrieb nicht wesentlich beeinträchtigt / eingeschränkt.
+        Reaktion, Analyse und Fehlerbehebung innerhalb von drei Werktagen.
+      </p>
+      <p>
+        <strong>Situation:</strong> Es liegt ein geringfügiger Ausfall von Softwarefunktionalitäten
+        oder des Dienstes vor. Die Auswirkungen bereiten Unannehmlichkeiten, die ggf. eine Zwischenlösung
+        zur Wiederherstellung der Funktion erfordern.
+      </p>
+
+      <h3>3. Eigenständige Projekte</h3>
+      <p>
+        Umfangreiche Neuentwicklungen, größere Module, Migrationen, komplette Redesigns oder Themen
+        mit mehrwöchigem Entwicklungsaufwand gelten als eigenständige Projekte und sind nicht
+        Bestandteil des laufenden Wartungsvertrags.
+      </p>
+      <p>
+        Diese werden separat geplant und angeboten.
+      </p>
+
+      <h3>4. Laufzeit & Kündigung</h3>
+      <ul>
+        <li><strong>Mindestlaufzeit:</strong> 3 Monate</li>
+        <li>Danach monatlich kündbar</li>
+        <li><strong>Kündigungsfrist:</strong> 30 Tage zum Monatsende</li>
+      </ul>
+
+      <h3>5. Sonstige Bestimmungen</h3>
+
+      <h4>5.1 Vertragsbeginn</h4>
+      <p>
+        Der Vertrag tritt mit Unterzeichnung durch beide Parteien in Kraft.
+      </p>
+
+      <h4>5.2 Mitwirkungspflichten des Auftraggebers</h4>
+      <p>Für eine erfolgreiche Zusammenarbeit bitten wir Sie um:</p>
+      <ul>
+        <li>Bereitstellung notwendiger Zugänge und Informationen</li>
+        <li>Benennung eines festen Ansprechpartners</li>
+        <li>Zeitnahe Rückmeldungen und Freigaben</li>
+        <li>Pflege der gemeinsamen Aufgabenliste</li>
+      </ul>
+
+      <h4>5.3 Vertraulichkeit</h4>
+      <p>
+        Beide Parteien verpflichten sich, alle im Rahmen der Zusammenarbeit erlangten
+        vertraulichen Informationen geheim zu halten und nicht an Dritte weiterzugeben.
+      </p>
+
+      <h4>5.4 Schlussbestimmungen</h4>
+      <p>
+        Es gilt das Recht der Bundesrepublik Deutschland. Änderungen und Ergänzungen
+        dieses Vertrags bedürfen der Schriftform. Sollten einzelne Bestimmungen dieses
+        Vertrags unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.
+      </p>
+    </article>
+
+    <!-- POSITIONEN -->
+    <article id="positionen">
+      <h2 id="positionen-title">Leistungspositionen</h2>
+
+      <table class="positionen-tabelle">
+        <thead>
+          <tr>
+            <th class="bezeichnung">Bezeichnung</th>
+            <th class="menge">Menge</th>
+            <th class="einheit">Einheit</th>
+            <th class="einzelpreis">Einzelpreis</th>
+            <th class="gesamt">Gesamt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Wartung – Allgemeine Aktualisierung der Komponenten<br><small>Aktualisierung Open-Source-Komponenten, Sicherheitsaktualisierungen, Fehlerüberwachung</small></td>
+            <td>1</td>
+            <td>Monat</td>
+            <td class="betrag">250,00 €</td>
+            <td class="betrag">250,00 €</td>
+          </tr>
+          <tr>
+            <td>Support & Weiterentwicklung<br><small>Reaktionszeiten bei Störung, fortlaufende Entwicklungsleistungen Laravel / Web / Backend / Frontend</small></td>
+            <td>1</td>
+            <td>Monat</td>
+            <td class="betrag">3.840,00 €</td>
+            <td class="betrag">3.840,00 €</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="summen-block">
+        <div class="summen-zeile">
+          <span class="label">Monatliche Pauschale (netto)</span>
+          <span class="betrag">4.090,00 €</span>
+        </div>
+        <div class="summen-zeile">
+          <span class="label">MwSt. (19%)</span>
+          <span class="betrag">777,10 €</span>
+        </div>
+        <div class="summen-zeile gesamt">
+          <span class="label">Monatlicher Gesamtbetrag (brutto)</span>
+          <span class="betrag">4.867,10 €</span>
+        </div>
+      </div>
+
+      <p class="zahlungsbedingungen">
+        <strong>Zahlungsbedingungen:</strong> Monatliche Abrechnung. Zahlbar innerhalb von 14 Tagen ohne Abzug.
+      </p>
+    </article>
+
+    <!-- AUFTRAGSBESTÄTIGUNG -->
+    <article id="auftragsbestaetigung">
+      <h2 id="auftrag-title">Auftragsbestätigung</h2>
+
+      <p class="intro">Mit Ihrer Unterschrift bestätigen Sie die Annahme dieses Angebots.</p>
+
+      <div class="zusammenfassung">
+        <table class="details-tabelle">
+          <tr>
+            <th>Angebot</th>
+            <td>ANG-2026-001 vom 05.02.2026</td>
+          </tr>
+          <tr>
+            <th>Projekt</th>
+            <td>Lizard</td>
+          </tr>
+          <tr>
+            <th>Auftraggeber</th>
+            <td>Wolf & Strauss Solutions GmbH & Co. KG, Mittelbreede 16, 33719 Bielefeld</td>
+          </tr>
+          <tr>
+            <th>Monatlicher Betrag</th>
+            <td><strong>4.867,10 € (brutto)</strong></td>
+          </tr>
+        </table>
+      </div>
+
+
+      <div class="unterschriften">
+        <div class="unterschrift-block">
+          <div class="unterschrift-linie"></div>
+          <p class="datum-ort">Ort, Datum / Auftragnehmer</p>
+        </div>
+
+        <div class="unterschrift-block">
+          <div class="unterschrift-linie"></div>
+          <p class="datum-ort">Ort, Datum / Auftraggeber</p>
+        </div>
+      </div>
+
+      <p class="hinweis">Bitte ein unterschriebenes Exemplar zurücksenden. Gültig bis 05.03.2026.</p>
+    </article>
+  </body>
+</html>

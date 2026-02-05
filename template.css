@@ -1,0 +1,551 @@
+/* =====================================================
+   ANGEBOTS-TEMPLATE - CSS
+   Corporate Design:
+   - Primär: #A0BD3C (Grün)
+   - Sekundär: #635049 (Braun)
+   ===================================================== */
+
+/* FONTS */
+@font-face {
+  font-family: Fira Sans;
+  font-weight: 400;
+  src: url(fonts/FiraSans-Regular.ttf);
+}
+@font-face {
+  font-family: Fira Sans;
+  font-style: italic;
+  font-weight: 400;
+  src: url(fonts/FiraSans-Italic.ttf);
+}
+@font-face {
+  font-family: Fira Sans;
+  font-weight: 300;
+  src: url(fonts/FiraSans-Light.ttf);
+}
+@font-face {
+  font-family: Fira Sans;
+  font-style: italic;
+  font-weight: 300;
+  src: url(fonts/FiraSans-LightItalic.ttf);
+}
+@font-face {
+  font-family: Fira Sans;
+  font-weight: 700;
+  src: url(fonts/FiraSans-Bold.ttf);
+}
+
+/* =====================================================
+   PAGE SETUP
+   ===================================================== */
+
+@page {
+  size: A4;
+  margin: 2cm 2cm 2.8cm 2cm;
+  
+  @top-right {
+    content: string(heading);
+    font-family: Fira Sans;
+    font-size: 9pt;
+    font-weight: 300;
+    color: #635049;
+    vertical-align: middle;
+    height: 1cm;
+  }
+  @bottom-left {
+    content: url(assets/logo-footer.png);
+    vertical-align: middle;
+  }
+  @bottom-center {
+    content: "Orlyapps - Janzen & Strauß GbR  ·  Azaleenweg 29, 26160 Bad Zwischenahn\ATel: +49 441 180 29 666  ·  info@orlyapps.de";
+    font-family: Fira Sans;
+    font-size: 7pt;
+    font-weight: 300;
+    color: #635049;
+    text-align: center;
+    white-space: pre-line;
+    vertical-align: middle;
+  }
+  @bottom-right {
+    content: "Seite " counter(page) " von " counter(pages);
+    font-family: Fira Sans;
+    font-size: 8pt;
+    font-weight: 300;
+    color: #635049;
+    vertical-align: middle;
+  }
+}
+
+@page:first {
+  margin: 0;
+  @top-right { content: none; }
+  @bottom-left { content: none; }
+  @bottom-center { content: none; }
+  @bottom-right { content: none; }
+}
+
+@page:blank {
+  @top-right { content: none; }
+  @bottom-left { content: none; }
+  @bottom-center { content: none; }
+  @bottom-right { content: none; }
+}
+
+/* =====================================================
+   BASE STYLES
+   ===================================================== */
+
+html {
+  color: #635049;
+  font-family: Fira Sans;
+  font-size: 10pt;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4 {
+  color: #635049;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 22pt;
+  margin-top: 0;
+  margin-bottom: 1cm;
+  padding-bottom: 0.3cm;
+  border-bottom: 2pt solid #A0BD3C;
+  string-set: heading content();
+}
+
+h3 {
+  font-size: 14pt;
+  margin-top: 0.8cm;
+  margin-bottom: 0.3cm;
+  color: #A0BD3C;
+}
+
+h4 {
+  font-size: 11pt;
+  margin-top: 0.5cm;
+  margin-bottom: 0.2cm;
+}
+
+p {
+  margin: 0.3cm 0;
+  text-align: justify;
+}
+
+ul {
+  margin: 0.3cm 0;
+  padding-left: 0.8cm;
+}
+
+li {
+  margin-bottom: 0.15cm;
+}
+
+strong {
+  font-weight: 700;
+  color: #635049;
+}
+
+/* =====================================================
+   DECKBLATT / COVER
+   ===================================================== */
+
+#cover {
+  display: flex;
+  flex-direction: column;
+  height: 297mm;
+  padding: 2cm;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9f5 100%);
+  page: no-header;
+}
+
+#cover .logo {
+  width: auto;
+  max-width: 8cm;
+  max-height: 2.5cm;
+  margin-bottom: 1cm;
+}
+
+#cover .projekt-titel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#cover h1 {
+  font-size: 36pt;
+  font-weight: 700;
+  color: #635049;
+  margin: 0;
+  line-height: 1.2;
+}
+
+#cover .untertitel {
+  font-size: 16pt;
+  font-weight: 300;
+  color: #A0BD3C;
+  margin-top: 0.5cm;
+}
+
+#cover .angebot-info {
+  background: #A0BD3C;
+  color: white;
+  padding: 0.8cm 1cm;
+  margin: 1cm -2cm;
+  width: calc(100% + 4cm);
+}
+
+#cover .angebot-info p {
+  margin: 0.2cm 0;
+  text-align: left;
+  font-size: 11pt;
+}
+
+#cover .angebot-info strong {
+  color: white;
+  font-weight: 400;
+  display: inline-block;
+  width: 4cm;
+}
+
+#cover .adressen {
+  display: flex;
+  gap: 2cm;
+  margin-top: 1cm;
+}
+
+#cover address {
+  font-style: normal;
+  white-space: pre-line;
+  flex: 1;
+  font-size: 10pt;
+  line-height: 1.5;
+}
+
+#cover address strong {
+  display: block;
+  font-size: 11pt;
+  color: #A0BD3C;
+  margin-bottom: 0.3cm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* =====================================================
+   ANSCHREIBEN (Brief-Layout)
+   ===================================================== */
+
+#anschreiben {
+  break-before: page;
+  page: content;
+}
+
+.brief-kopf {
+  margin-bottom: 1.5cm;
+}
+
+.brief-empfaenger {
+  font-style: normal;
+  line-height: 1.4;
+  margin-bottom: 1cm;
+}
+
+.brief-datum {
+  text-align: right;
+  margin: 0;
+  color: #635049;
+}
+
+.brief-betreff {
+  margin: 1cm 0 0.8cm 0;
+  font-size: 11pt;
+}
+
+#anschreiben .anrede {
+  margin-bottom: 0.5cm;
+}
+
+#anschreiben p {
+  text-align: justify;
+}
+
+#anschreiben .gruss {
+  margin-top: 1cm;
+  margin-bottom: 0;
+}
+
+#anschreiben .unterschrift-absender {
+  margin-top: 0.8cm;
+}
+
+/* =====================================================
+   LEISTUNGSBESCHREIBUNG
+   ===================================================== */
+
+#leistungsbeschreibung {
+  break-before: page;
+}
+
+#leistungsbeschreibung h3 {
+  break-after: avoid;
+}
+
+#leistungsbeschreibung h4 {
+  break-after: avoid;
+}
+
+#leistungsbeschreibung ul {
+  break-inside: avoid;
+}
+
+/* =====================================================
+   POSITIONEN / TABELLE
+   ===================================================== */
+
+#positionen {
+  break-before: page;
+}
+
+.positionen-tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5cm;
+  font-size: 9pt;
+}
+
+.positionen-tabelle thead {
+  background: #A0BD3C;
+  color: white;
+}
+
+.positionen-tabelle th {
+  padding: 0.3cm 0.2cm;
+  text-align: left;
+  font-weight: 400;
+  border: none;
+}
+
+.positionen-tabelle th.bezeichnung {
+  width: auto;
+}
+
+.positionen-tabelle th.menge,
+.positionen-tabelle th.einheit {
+  width: 1.5cm;
+  text-align: center;
+}
+
+.positionen-tabelle th.einzelpreis,
+.positionen-tabelle th.gesamt {
+  width: 2.5cm;
+  text-align: right;
+}
+
+.positionen-tabelle tbody tr {
+  border-bottom: 0.5pt solid #e0e0e0;
+}
+
+.positionen-tabelle tbody tr:nth-child(even) {
+  background: #f9faf6;
+}
+
+.positionen-tabelle td {
+  padding: 0.25cm 0.2cm;
+  vertical-align: top;
+}
+
+.positionen-tabelle td:first-child {
+  text-align: left;
+}
+
+.positionen-tabelle td.betrag {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.positionen-tabelle td:nth-child(2),
+.positionen-tabelle td:nth-child(3) {
+  text-align: center;
+}
+
+/* Summenblock */
+.summen-block {
+  margin-top: 0.5cm;
+  margin-left: auto;
+  width: 8cm;
+}
+
+.summen-zeile {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2cm 0.3cm;
+  border-bottom: 0.5pt solid #e0e0e0;
+}
+
+.summen-zeile .label {
+  font-weight: 300;
+}
+
+.summen-zeile .betrag {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.summen-zeile.rabatt {
+  color: #A0BD3C;
+}
+
+.summen-zeile.gesamt {
+  background: #A0BD3C;
+  color: white;
+  font-weight: 700;
+  border: none;
+  margin-top: 0.2cm;
+}
+
+.summen-zeile.gesamt .label,
+.summen-zeile.gesamt .betrag {
+  font-weight: 700;
+}
+
+.zahlungsbedingungen {
+  margin-top: 1cm;
+  padding: 0.5cm;
+  background: #f5f5f0;
+  border-left: 3pt solid #A0BD3C;
+  font-size: 9pt;
+}
+
+/* =====================================================
+   AUFTRAGSBESTÄTIGUNG
+   ===================================================== */
+
+#auftragsbestaetigung {
+  break-before: page;
+}
+
+#auftragsbestaetigung h2 {
+  margin-bottom: 0.5cm;
+}
+
+#auftragsbestaetigung .intro {
+  font-size: 10pt;
+  margin-bottom: 0.5cm;
+}
+
+.zusammenfassung {
+  background: #f9faf6;
+  padding: 0.5cm;
+  margin-bottom: 0.5cm;
+  border: 1pt solid #e0e0e0;
+}
+
+.details-tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+}
+
+.details-tabelle tr {
+  border-bottom: 0.5pt solid #e0e0e0;
+}
+
+.details-tabelle tr:last-child {
+  border-bottom: none;
+}
+
+.details-tabelle th {
+  text-align: left;
+  font-weight: 400;
+  padding: 0.15cm 0.3cm 0.15cm 0;
+  width: 3cm;
+  color: #635049;
+  vertical-align: top;
+}
+
+.details-tabelle td {
+  padding: 0.15cm 0;
+  vertical-align: top;
+}
+
+.agb-inline {
+  font-size: 8pt;
+  color: #888;
+  margin: 0.5cm 0;
+}
+
+/* Unterschriften */
+.unterschriften {
+  display: flex;
+  gap: 2cm;
+  margin-top: 1cm;
+}
+
+.unterschrift-block {
+  flex: 1;
+}
+
+.unterschrift-block .label {
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #A0BD3C;
+  margin-bottom: 0.3cm;
+}
+
+.unterschrift-linie {
+  border-bottom: 1pt solid #635049;
+  height: 1cm;
+  margin-bottom: 0.2cm;
+}
+
+.unterschrift-block .name {
+  font-weight: 700;
+  margin: 0;
+  font-size: 9pt;
+}
+
+.unterschrift-block .datum-ort {
+  font-size: 8pt;
+  color: #888;
+  margin: 0;
+}
+
+#auftragsbestaetigung .hinweis {
+  margin-top: 0.8cm;
+  padding: 0.3cm;
+  text-align: center;
+  background: #A0BD3C;
+  color: white;
+  font-size: 8pt;
+}
+
+/* =====================================================
+   PRINT OPTIMIZATIONS
+   ===================================================== */
+
+@media print {
+  article {
+    break-inside: avoid;
+  }
+  
+  h2, h3, h4 {
+    break-after: avoid;
+  }
+  
+  table {
+    break-inside: avoid;
+  }
+  
+  .unterschriften {
+    break-inside: avoid;
+  }
+}
