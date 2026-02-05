@@ -5,8 +5,36 @@
 #        ./create-document.sh test
 #        ./create-document.sh all
 
+# Verzeichnis des Scripts ermitteln
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Ordner erstellen falls nicht vorhanden
 mkdir -p documents output
+
+# Funktion: HTML verarbeiten und PDF generieren
+build_pdf() {
+    local html_file="$1"
+    local pdf_file="$2"
+    local dir=$(dirname "$html_file")
+    local filename=$(basename "$html_file" .html)
+    # Temporäre Datei im gleichen Ordner, damit relative Pfade (CSS, Assets) funktionieren
+    local temp_file="${dir}/_calc_${filename}.html"
+    
+    # Summen berechnen (falls data-calc vorhanden)
+    node "$SCRIPT_DIR/calculate-sums.js" "$html_file" "$temp_file" 2>/dev/null
+    
+    if [ $? -eq 0 ] && [ -f "$temp_file" ]; then
+        # PDF aus berechneter Datei generieren
+        weasyprint "$temp_file" "$pdf_file" 2>/dev/null
+        local result=$?
+        rm -f "$temp_file"
+        return $result
+    else
+        # Fallback: Original-HTML verwenden
+        weasyprint "$html_file" "$pdf_file" 2>/dev/null
+        return $?
+    fi
+}
 
 # Alle Dokumente bauen
 if [ "$1" = "all" ]; then
@@ -18,7 +46,7 @@ if [ "$1" = "all" ]; then
         [[ "$filename" == _* ]] && continue
         pdf_file="output/${filename}.pdf"
         echo "→ Building: $filename"
-        weasyprint "$html_file" "$pdf_file" 2>/dev/null
+        build_pdf "$html_file" "$pdf_file"
         if [ $? -eq 0 ]; then
             echo "  ✓ $pdf_file"
             ((count++))
@@ -34,7 +62,7 @@ fi
 # Test-Modus: Template testen
 if [ "$1" = "test" ]; then
     cp template.html documents/_test.html
-    weasyprint documents/_test.html output/_test.pdf
+    build_pdf documents/_test.html output/_test.pdf
     rm documents/_test.html
     echo "✓ Test-PDF erstellt: output/_test.pdf"
     open output/_test.pdf 2>/dev/null || xdg-open output/_test.pdf 2>/dev/null
@@ -65,6 +93,6 @@ if [ ! -f "$HTML_FILE" ]; then
     echo "✓ Dokument erstellt: $HTML_FILE"
     echo "  → Bitte bearbeiten und dann erneut ausführen"
 else
-    weasyprint "$HTML_FILE" "$PDF_FILE"
+    build_pdf "$HTML_FILE" "$PDF_FILE"
     echo "✓ PDF erstellt: $PDF_FILE"
 fi

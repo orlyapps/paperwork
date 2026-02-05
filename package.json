@@ -1,0 +1,13 @@
+{
+  "name": "paperwork",
+  "version": "1.0.0",
+  "description": "Dokument-Generator für Angebote, Rechnungen und Verträge",
+  "private": true,
+  "scripts": {
+    "build": "./create-document.sh all",
+    "build:test": "./create-document.sh test"
+  },
+  "dependencies": {
+    "jsdom": "^26.0.0"
+  }
+}

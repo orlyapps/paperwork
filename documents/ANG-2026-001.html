@@ -19,8 +19,8 @@
 
       <div class="angebot-info">
         <p><strong>Angebotsnummer:</strong> ANG-2026-001</p>
-        <p><strong>Datum:</strong> 05. Februar 2026</p>
-        <p><strong>Gültig bis:</strong> 05. März 2026</p>
+        <p><strong>Datum:</strong> <span data-date="today"></span></p>
+        <p><strong>Gültig bis:</strong> <span data-date="+30days"></span></p>
       </div>
 
       <div class="adressen">
@@ -51,7 +51,7 @@
           Mittelbreede 16<br>
           33719 Bielefeld
         </address>
-        <p class="brief-datum">Bad Zwischenahn, 05. Februar 2026</p>
+        <p class="brief-datum">Bad Zwischenahn, <span data-date="today"></span></p>
       </div>
 
       <p class="brief-betreff"><strong>Angebot: Lizard – Wartungsvertrag</strong></p>
@@ -302,7 +302,7 @@
     <article id="positionen">
       <h2 id="positionen-title">Leistungspositionen</h2>
 
-      <table class="positionen-tabelle">
+      <table class="positionen-tabelle" data-calc="true" data-vat="19">
         <thead>
           <tr>
             <th class="bezeichnung">Bezeichnung</th>
@@ -313,35 +313,35 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr data-quantity="1" data-unit-price="250">
             <td>Wartung – Allgemeine Aktualisierung der Komponenten<br><small>Aktualisierung Open-Source-Komponenten, Sicherheitsaktualisierungen, Fehlerüberwachung</small></td>
-            <td>1</td>
+            <td></td>
             <td>Monat</td>
-            <td class="betrag">250,00 €</td>
-            <td class="betrag">250,00 €</td>
+            <td class="betrag"></td>
+            <td class="betrag"></td>
           </tr>
-          <tr>
+          <tr data-quantity="1" data-unit-price="3800">
             <td>Support & Weiterentwicklung<br><small>Reaktionszeiten bei Störung, fortlaufende Entwicklungsleistungen Laravel / Web / Backend / Frontend</small></td>
-            <td>1</td>
+            <td></td>
             <td>Monat</td>
-            <td class="betrag">3.840,00 €</td>
-            <td class="betrag">3.840,00 €</td>
+            <td class="betrag"></td>
+            <td class="betrag"></td>
           </tr>
         </tbody>
       </table>
 
-      <div class="summen-block">
+      <div class="summen-block" data-totals="true">
         <div class="summen-zeile">
           <span class="label">Monatliche Pauschale (netto)</span>
-          <span class="betrag">4.090,00 €</span>
+          <span class="betrag" data-field="subtotal"></span>
         </div>
         <div class="summen-zeile">
           <span class="label">MwSt. (19%)</span>
-          <span class="betrag">777,10 €</span>
+          <span class="betrag" data-field="vat"></span>
         </div>
         <div class="summen-zeile gesamt">
           <span class="label">Monatlicher Gesamtbetrag (brutto)</span>
-          <span class="betrag">4.867,10 €</span>
+          <span class="betrag" data-field="total"></span>
         </div>
       </div>
 
@@ -360,7 +360,7 @@
         <table class="details-tabelle">
           <tr>
             <th>Angebot</th>
-            <td>ANG-2026-001 vom 05.02.2026</td>
+            <td>ANG-2026-001 vom <span data-date="today"></span></td>
           </tr>
           <tr>
             <th>Projekt</th>
@@ -390,7 +390,7 @@
         </div>
       </div>
 
-      <p class="hinweis">Bitte ein unterschriebenes Exemplar zurücksenden. Gültig bis 05.03.2026.</p>
+      <p class="hinweis">Bitte ein unterschriebenes Exemplar zurücksenden. Gültig bis <span data-date="+30days"></span>.</p>
     </article>
   </body>
 </html>
