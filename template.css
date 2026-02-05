@@ -41,7 +41,7 @@
 @page {
   size: A4;
   margin: 2cm 2cm 2.8cm 2cm;
-  
+
   @top-right {
     content: string(heading);
     font-family: Fira Sans;
@@ -536,15 +536,15 @@ strong {
   article {
     break-inside: avoid;
   }
-  
+
   h2, h3, h4 {
     break-after: avoid;
   }
-  
+
   table {
     break-inside: avoid;
   }
-  
+
   .unterschriften {
     break-inside: avoid;
   }
