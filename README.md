@@ -33,7 +33,9 @@ npm install
 ├── output/              # Generierte PDFs
 ├── scripts/             # Build-Scripts
 │   ├── create-document.sh
-│   └── calculate-sums.js
+│   ├── calculate-sums.js
+│   ├── watch.js         # Live-Vorschau Server
+│   └── preview.html     # Vorschau-Seite
 ├── src/                 # Templates und Styles
 │   ├── template.html    # HTML-Vorlage
 │   └── template.css     # CSS-Styles
@@ -77,7 +79,38 @@ npm run test:pdf
 
 # Alle Dokumente als PDF generieren
 npm run build
+
+# Live-Vorschau mit Auto-Reload
+npm run watch
 ```
+
+## Live-Vorschau
+
+Der Watch-Modus überwacht HTML-Dateien und generiert PDFs automatisch bei Änderungen.
+
+### Starten
+
+```bash
+npm run watch
+```
+
+Öffne dann http://localhost:3000 im Browser.
+
+### Features
+
+- **Automatische PDF-Generierung** – Bei jeder Änderung an HTML-Dateien in `documents/` wird das PDF neu erstellt
+- **Live-Reload** – Die Vorschau im Browser aktualisiert sich automatisch
+- **Dokument-Auswahl** – Dropdown zur Auswahl des anzuzeigenden Dokuments
+- **Status-Anzeige** – Zeigt Verbindungsstatus und letzte Aktualisierung
+- **Direktlink** – URL-Parameter `?doc=ANG-2026-001` für direkten Zugriff auf ein Dokument
+
+### Workflow
+
+1. `npm run watch` starten
+2. Browser öffnen: http://localhost:3000
+3. Dokument im Dropdown auswählen
+4. HTML-Datei in Cursor bearbeiten und speichern
+5. PDF-Vorschau aktualisiert sich automatisch
 
 ## Automatische Summenberechnung
 

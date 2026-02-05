@@ -6,9 +6,14 @@
   "scripts": {
     "doc": "./scripts/create-document.sh",
     "build": "./scripts/create-document.sh all",
-    "test:pdf": "./scripts/create-document.sh test"
+    "test:pdf": "./scripts/create-document.sh test",
+    "watch": "node scripts/watch.js"
   },
   "dependencies": {
     "jsdom": "^26.0.0"
+  },
+  "devDependencies": {
+    "chokidar": "^4.0.0",
+    "express": "^5.0.0"
   }
 }

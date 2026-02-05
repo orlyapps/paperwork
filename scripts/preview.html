@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Live Preview</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary: #A0BD3C;
+      --secondary: #635049;
+      --bg: #f5f5f5;
+      --card: #ffffff;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    header {
+      background: var(--secondary);
+      color: white;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+    
+    header h1 {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+    }
+    
+    select {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      background: white;
+      cursor: pointer;
+      min-width: 200px;
+    }
+    
+    select:focus {
+      outline: 2px solid var(--primary);
+    }
+    
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      background: var(--primary);
+      color: white;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    
+    button:hover {
+      opacity: 0.9;
+    }
+    
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      opacity: 0.8;
+    }
+    
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #888;
+    }
+    
+    .status-dot.connected {
+      background: var(--primary);
+    }
+    
+    .status-dot.updating {
+      background: #f0ad4e;
+      animation: pulse 1s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    
+    main {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+    
+    .preview-container {
+      flex: 1;
+      background: var(--card);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .preview-header {
+      padding: 10px 16px;
+      background: #fafafa;
+      border-bottom: 1px solid #eee;
+      font-size: 13px;
+      color: #666;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .last-update {
+      font-size: 12px;
+      color: #999;
+    }
+    
+    iframe {
+      flex: 1;
+      border: none;
+      width: 100%;
+    }
+    
+    .empty-state {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      gap: 12px;
+    }
+    
+    .empty-state svg {
+      width: 64px;
+      height: 64px;
+      opacity: 0.3;
+    }
+    
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--secondary);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+    
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PDF Live Preview</h1>
+    <div class="controls">
+      <select id="documentSelect">
+        <option value="">Dokument auswählen...</option>
+      </select>
+      <button id="refreshBtn" disabled>Aktualisieren</button>
+      <div class="status">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Verbinde...</span>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <div class="preview-container">
+      <div class="preview-header">
+        <span id="currentFile">Kein Dokument ausgewählt</span>
+        <span class="last-update" id="lastUpdate"></span>
+      </div>
+      <div id="emptyState" class="empty-state">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+        </svg>
+        <p>Wähle ein Dokument aus der Liste</p>
+      </div>
+      <iframe id="pdfFrame" style="display: none;"></iframe>
+    </div>
+  </main>
+  
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const documentSelect = document.getElementById('documentSelect');
+    const refreshBtn = document.getElementById('refreshBtn');
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    const currentFile = document.getElementById('currentFile');
+    const lastUpdate = document.getElementById('lastUpdate');
+    const emptyState = document.getElementById('emptyState');
+    const pdfFrame = document.getElementById('pdfFrame');
+    const toast = document.getElementById('toast');
+    
+    let currentDocument = null;
+    let eventSource = null;
+    
+    // Toast anzeigen
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+    
+    // Zeitformat
+    function formatTime(date) {
+      return date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+    
+    // Dokumente laden
+    async function loadDocuments() {
+      try {
+        const response = await fetch('/api/documents');
+        const documents = await response.json();
+        
+        documentSelect.innerHTML = '<option value="">Dokument auswählen...</option>';
+        documents.forEach(doc => {
+          const option = document.createElement('option');
+          option.value = doc;
+          option.textContent = doc;
+          documentSelect.appendChild(option);
+        });
+        
+        // URL-Parameter prüfen
+        const params = new URLSearchParams(window.location.search);
+        const docParam = params.get('doc');
+        if (docParam && documents.includes(docParam)) {
+          documentSelect.value = docParam;
+          loadPdf(docParam);
+        }
+      } catch (error) {
+        console.error('Fehler beim Laden der Dokumente:', error);
+      }
+    }
+    
+    // PDF laden
+    function loadPdf(docName) {
+      if (!docName) {
+        currentDocument = null;
+        currentFile.textContent = 'Kein Dokument ausgewählt';
+        lastUpdate.textContent = '';
+        refreshBtn.disabled = true;
+        emptyState.style.display = 'flex';
+        pdfFrame.style.display = 'none';
+        pdfFrame.src = 'about:blank';
+        return;
+      }
+      
+      currentDocument = docName;
+      currentFile.textContent = `${docName}.pdf`;
+      lastUpdate.textContent = `Geladen: ${formatTime(new Date())}`;
+      refreshBtn.disabled = false;
+      
+      // URL aktualisieren
+      const url = new URL(window.location);
+      url.searchParams.set('doc', docName);
+      window.history.replaceState({}, '', url);
+      
+      // iframe anzeigen und PDF laden mit Cache-Busting
+      emptyState.style.display = 'none';
+      pdfFrame.style.display = 'block';
+      pdfFrame.src = `/output/${docName}.pdf?t=${Date.now()}`;
+    }
+    
+    // PDF aktualisieren (nur iframe src ändern - kein Page Reload)
+    function refreshPdf() {
+      if (!currentDocument) return;
+      
+      const timestamp = Date.now();
+      pdfFrame.src = `/output/${currentDocument}.pdf?t=${timestamp}`;
+      lastUpdate.textContent = `Aktualisiert: ${formatTime(new Date())}`;
+    }
+    
+    // SSE Verbindung
+    function connectSSE() {
+      if (eventSource) {
+        eventSource.close();
+      }
+      
+      eventSource = new EventSource('/events');
+      
+      eventSource.onopen = () => {
+        statusDot.className = 'status-dot connected';
+        statusText.textContent = 'Verbunden';
+      };
+      
+      eventSource.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          
+          if (data.type === 'update') {
+            // Status kurz auf "updating" setzen
+            statusDot.className = 'status-dot updating';
+            statusText.textContent = 'Aktualisiere...';
+            
+            setTimeout(() => {
+              statusDot.className = 'status-dot connected';
+              statusText.textContent = 'Verbunden';
+            }, 1000);
+            
+            // Wenn das aktuelle Dokument aktualisiert wurde
+            if (data.file === currentDocument) {
+              refreshPdf();
+              showToast(`${data.file}.pdf aktualisiert`);
+            } else {
+              showToast(`${data.file}.pdf wurde generiert`);
+            }
+          }
+        } catch (error) {
+          console.error('SSE Parse Error:', error);
+        }
+      };
+      
+      eventSource.onerror = () => {
+        statusDot.className = 'status-dot';
+        statusText.textContent = 'Getrennt';
+        
+        // Reconnect nach 3 Sekunden
+        setTimeout(connectSSE, 3000);
+      };
+    }
+    
+    // Event Listener
+    documentSelect.addEventListener('change', (e) => {
+      loadPdf(e.target.value);
+    });
+    
+    refreshBtn.addEventListener('click', () => {
+      refreshPdf();
+      showToast('PDF neu geladen');
+    });
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Cmd/Ctrl + R: Refresh
+      if ((e.metaKey || e.ctrlKey) && e.key === 'r') {
+        e.preventDefault();
+        if (currentDocument) {
+          refreshPdf();
+          showToast('PDF neu geladen');
+        }
+      }
+    });
+    
+    // Init
+    loadDocuments();
+    connectSSE();
+  </script>
+</body>
+</html>
