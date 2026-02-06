@@ -170,6 +170,19 @@ function fillTotalsBlock(document, sums) {
 }
 
 /**
+ * Aktualisiert alle data-total="true" Elemente mit der berechneten Gesamtsumme
+ * @param {Document} document - JSDOM Document
+ * @param {Object} sums - Berechnete Summen
+ */
+function updateTotalFields(document, sums) {
+  const totalElements = document.querySelectorAll('[data-total="true"]');
+  
+  totalElements.forEach(el => {
+    el.textContent = formatCurrency(sums.total);
+  });
+}
+
+/**
  * Verarbeitet eine HTML-Datei und berechnet alle Summen
  * @param {string} inputPath - Pfad zur Eingabedatei
  * @param {string} outputPath - Pfad zur Ausgabedatei
@@ -209,6 +222,9 @@ function processDocument(inputPath, outputPath) {
 
     // Summenblock befüllen
     fillTotalsBlock(document, totalSums);
+    
+    // Alle data-total="true" Felder aktualisieren
+    updateTotalFields(document, totalSums);
     
     result.subtotal = totalSums.subtotal;
     result.vat = totalSums.vat;
