@@ -1,0 +1,306 @@
+<!DOCTYPE html><html lang="de"><head>
+    <meta charset="utf-8">
+    <link href="../src/template.css" rel="stylesheet">
+    <title>Angebot</title>
+    <meta name="description" content="Angebots-Template">
+  </head>
+
+  <body>
+    <!-- DECKBLATT -->
+    <article id="cover">
+      <img src="../assets/logo.png" alt="Firmenlogo" class="logo">
+
+      <div class="projekt-titel">
+        <h1>VIP-Betreuung für Einzelveranstaltungen</h1>
+        <p class="untertitel">Angebot für Erweiterung der Veranstaltungsverwaltung</p>
+      </div>
+
+      <div class="angebot-info">
+        <p><strong>Angebotsnummer:</strong> ANG-2026-003</p>
+        <p><strong>Datum:</strong> <span data-date="today">03.03.2026</span></p>
+        <p><strong>Gültig bis:</strong> <span data-date="+28days">31.03.2026</span> (4 Wochen)</p>
+      </div>
+
+      <div class="adressen">
+        <address class="absender">
+          <strong>Absender</strong>
+          Orlyapps - Janzen &amp; Strauß GbR
+          Azaleenweg 29
+          26160 Bad Zwischenahn
+          Tel: +49 441 180 29 666
+          info@orlyapps.de
+        </address>
+        <address class="empfaenger">
+          <strong>Empfänger</strong>
+          Ziemer &amp; Falke – Schulungszentrum für Hundetrainer GmbH &amp; Co. KG
+          Blanker Schlatt 15
+          26197 Großenkneten
+          Ansprechpartnerin: Annika Kirchhammer
+        </address>
+      </div>
+    </article>
+
+    <!-- ANSCHREIBEN -->
+    <article id="anschreiben">
+      <div class="brief-kopf">
+        <address class="brief-empfaenger">
+          Ziemer &amp; Falke – Schulungszentrum für Hundetrainer GmbH &amp; Co. KG<br>
+          Annika Kirchhammer<br>
+          Blanker Schlatt 15<br>
+          26197 Großenkneten
+        </address>
+        <p class="brief-datum">Bad Zwischenahn, <span data-date="today">03.03.2026</span></p>
+      </div>
+
+      <p class="brief-betreff"><strong>Angebot: VIP-Betreuung für Einzelveranstaltungen</strong></p>
+
+      <p class="anrede">Sehr geehrte Frau Kirchhammer,</p>
+
+      <p>
+        vielen Dank für die vertrauensvolle Zusammenarbeit und die gemeinsamen Gespräche zu Ihren
+        Anforderungen rund um die Betreuung von Einzelveranstaltungen. Gerne unterbreiten wir Ihnen
+        auf dieser Basis unser Angebot zur Umsetzung der VIP-Betreuung für Einzelveranstaltungen in Ihrem System.
+      </p>
+
+      <p>
+        Ziel der Erweiterung ist es, VIP-Betreuer als eigene Rolle abzubilden, den Bedarf an VIP-Betreuung
+        pro Veranstaltung eindeutig zu kennzeichnen, einen klaren Einladungs- und Bestätigungsprozess
+        zu implementieren und die Einsätze der VIP-Betreuer transparent auswerten zu können. Gleichzeitig
+        wird der bisherige Status „VIP/Statist“ in „Support“ umbenannt und die Regeln zur Teilnehmerzählung
+        entsprechend angepasst.
+      </p>
+
+      <p>
+        Auf den folgenden Seiten finden Sie die detaillierte Leistungsbeschreibung sowie die Konditionen
+        für die Umsetzung des Projekts. Wir würden uns freuen, das Vorhaben gemeinsam mit Ihnen umzusetzen
+        und stehen Ihnen für Rückfragen jederzeit gerne zur Verfügung.
+      </p>
+
+      <p class="gruss">Mit freundlichen Grüßen</p>
+
+      <p class="unterschrift-absender">
+        <strong>Orlyapps - Janzen &amp; Strauß GbR</strong>
+      </p>
+    </article>
+
+    <!-- LEISTUNGSBESCHREIBUNG -->
+    <article id="leistungsbeschreibung">
+      <h2 id="leistung-title">Leistungsbeschreibung</h2>
+
+      <h3>1. Ziel der Erweiterung</h3>
+      <p>
+        Ziel dieses Projekts ist die Einführung einer VIP-Betreuung für Einzelveranstaltungen.
+        ORLA-Mitarbeiter können künftig gezielt VIP-Betreuer zu Veranstaltungen einladen, den
+        Status der Einladungen verwalten und nachvollziehen, wie häufig einzelne VIP-Betreuer
+        bereits im Einsatz waren. Gleichzeitig wird der bisherige Status „VIP/Statist“ in
+        „Support“ umbenannt und die Regeln zur Teilnehmerzählung werden entsprechend angepasst.
+      </p>
+
+      <h3>2. Rolle „VIP-Betreuer“ und Stammdaten</h3>
+      <ul>
+        <li>
+          Einführung einer eigenen Entität <strong>„VIP-Betreuer“</strong>, die mit bestehenden
+          Mitarbeiter- bzw. Dozentenprofilen verknüpft wird.
+        </li>
+        <li>
+          Nur <strong>ORLA-Mitarbeiter</strong> können VIP-Betreuer anlegen, bearbeiten und für
+          Veranstaltungen auswählen.
+        </li>
+      </ul>
+
+      <h3>3. Erweiterungen an Einzelveranstaltungen</h3>
+      <ul>
+        <li>
+          Jede Einzelveranstaltung erhält ein neues Feld
+          <strong>„VIP-Betreuung nötig (ja/nein)“</strong>.
+        </li>
+        <li>
+          Pro Veranstaltung können <strong>ein oder mehrere VIP-Betreuer</strong> eingeladen werden (ggf. alle).
+        </li>
+        <li>
+          Ist „VIP-Betreuung nötig = ja“ gesetzt, kann die Veranstaltung
+          <strong>nicht final freigegeben</strong> werden, solange nicht mindestens ein VIP-Betreuer den Einsatz
+          angenommen und ein ORLA-Mitarbeiter diesen Status bestätigt hat (harte Pflicht-Regel).
+        </li>
+        <li>
+          Die VIP-Betreuung wird im Bereich der Teilnehmerverwaltung in einem eigenen Abschnitt
+          <strong>„VIP-Betreuung“</strong> dargestellt.
+        </li>
+      </ul>
+
+      <h3>4. Einladungs- und Bestätigungsprozess</h3>
+      <ol>
+        <li>
+          Ein ORLA-Mitarbeiter wählt für eine Veranstaltung <strong>einen oder mehrere VIP-Betreuer</strong> aus (oder alle) und löst die Einladung aus.
+        </li>
+        <li>
+          Jeder eingeladene VIP-Betreuer erhält eine E-Mail-Benachrichtigung mit dem Hinweis, die Einladung
+          nach Login im Portal anzunehmen oder abzulehnen.
+        </li>
+        <li>
+          Der aktuelle Rückmeldestatus (eingeladen, angenommen, abgelehnt) wird pro VIP-Betreuer im System
+          angezeigt.
+        </li>
+        <li>
+          Ein ORLA-Mitarbeiter bestätigt die Rückmeldungen. Erst danach werden die betroffenen VIP-Betreuer
+          mit dem Status <strong>„VIP Betreuer“</strong> an der Veranstaltung geführt.
+        </li>
+        <li>
+          Reagiert ein eingeladener VIP-Betreuer nicht, kann ein ORLA-Mitarbeiter den Einladungsstatus
+          <strong>manuell setzen</strong> (z.B. angenommen/abgelehnt), um den Prozess fortzuführen.
+        </li>
+      </ol>
+      <p>
+        Statuswechsel im Einladungsprozess werden als <strong>interne Hinweise</strong> im System
+        dargestellt. Es werden keine zusätzlichen externen E-Mail-Benachrichtigungen bei
+        Statusänderungen versendet.
+      </p>
+
+      <h3>5. Zählung der Einsätze und Übersichten</h3>
+      <ul>
+        <li>
+          Als Einsatz zählt jede Veranstaltung, in der ein VIP-Betreuer den Einsatz angenommen
+          hat, ein ORLA-Mitarbeiter diesen bestätigt hat und die Veranstaltung den Status
+          <strong>„durchgeführt/abgeschlossen“</strong> erreicht.
+        </li>
+        <li>
+          Für jeden VIP-Betreuer wird die <strong>Gesamtanzahl aller bisherigen Einsätze</strong>
+          ohne zeitliche Einschränkung ermittelt.
+        </li>
+        <li>
+          Beim Einladen zeigt das System an, wie viele Einsätze ein VIP-Betreuer bereits
+          durchgeführt hat (z.B. „7 Einsätze“).
+        </li>
+        <li>
+          In einer Übersichtsliste werden alle VIP-Betreuer mit Name, Zuordnung
+          (Mitarbeiter/Dozent) und Gesamtanzahl der Einsätze angezeigt.
+        </li>
+        <li>
+          Für jeden VIP-Betreuer kann eine Detailansicht mit allen Einsätzen
+          (Datum, Veranstaltungstitel) aufgerufen werden.
+        </li>
+      </ul>
+
+      <h3>6. Teilnehmerzählung und Status „Support“</h3>
+      <ul>
+        <li>
+          Ein zugeordneter VIP-Betreuer wird <strong>nicht als Teilnehmer:in gezählt</strong> und
+          belegt keinen Teilnehmerplatz. Die Rolle wird in den Ansichten klar als
+          <strong>„VIP Betreuer“</strong> ausgewiesen.
+        </li>
+        <li>
+          Der bestehende Status <strong>„VIP/Statist“</strong> wird im System vollständig in
+          <strong>„Support“</strong> umbenannt.
+        </li>
+        <li>
+          Das fachliche Verhalten der Rolle bleibt unverändert; bestehende Veranstaltungen und
+          Datenbestände werden entsprechend auf den neuen Namen „Support“ umgestellt.
+        </li>
+      </ul>
+
+      <h3>7. Qualitätssicherung und Abstimmung</h3>
+      <ul>
+        <li>
+          Gemeinsame Abstimmung der finalen Bezeichnungen und Texte (z.B. Feldbezeichnungen,
+          Hinweise im System) mit Ihnen.
+        </li>
+        <li>
+          Bereitstellung der Umsetzung in Ihrer Testumgebung zur Abnahme.
+        </li>
+        <li>
+          Rollout in die produktive Umgebung nach Freigabe durch Sie.
+        </li>
+      </ul>
+    </article>
+
+    <!-- POSITIONEN -->
+    <article id="positionen">
+      <h2 id="positionen-title">Leistungspositionen</h2>
+
+      <table class="positionen-tabelle" data-calc="true" data-vat="19">
+        <thead>
+          <tr>
+            <th class="bezeichnung">Bezeichnung</th>
+            <th class="menge">Menge</th>
+            <th class="einheit">Einheit</th>
+            <th class="einzelpreis">Einzelpreis</th>
+            <th class="gesamt">Gesamt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-quantity="1" data-unit-price="3840">
+            <td>VIP-Betreuung für Einzelveranstaltungen<br><small>Konzeption und Implementierung der VIP-Betreuer-Rolle, Einladungsprozesse, Auswertungen und Statusanpassungen gemäß Leistungsbeschreibung</small></td>
+            <td>1</td>
+            <td>Projekt</td>
+            <td class="betrag">3.840,00 €</td>
+            <td class="betrag">3.840,00 €</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="summen-block" data-totals="true">
+        <div class="summen-zeile">
+          <span class="label">Projektpauschale (netto)</span>
+          <span class="betrag" data-field="subtotal">3.840,00 €</span>
+        </div>
+        <div class="summen-zeile">
+          <span class="label">MwSt. (19%)</span>
+          <span class="betrag" data-field="vat">729,60 €</span>
+        </div>
+        <div class="summen-zeile gesamt">
+          <span class="label">Projektbetrag (brutto)</span>
+          <span class="betrag" data-field="total">4.569,60 €</span>
+        </div>
+      </div>
+
+      <p class="zahlungsbedingungen">
+        <strong>Zahlungsbedingungen:</strong> Einmalige Projektpauschale. Zahlbar innerhalb von 14 Tagen ohne Abzug.
+      </p>
+    </article>
+
+    <!-- AUFTRAGSBESTÄTIGUNG -->
+    <article id="auftragsbestaetigung">
+      <h2 id="auftrag-title">Auftragsbestätigung</h2>
+
+      <p class="intro">Mit Ihrer Unterschrift bestätigen Sie die Annahme dieses Angebots.</p>
+
+      <div class="zusammenfassung">
+        <table class="details-tabelle">
+          <tbody><tr>
+            <th>Angebot</th>
+            <td>ANG-2026-003 vom <span data-date="today">03.03.2026</span></td>
+          </tr>
+          <tr>
+            <th>Projekt</th>
+            <td>VIP-Betreuung für Einzelveranstaltungen</td>
+          </tr>
+          <tr>
+            <th>Auftraggeber</th>
+            <td>Ziemer &amp; Falke – Schulungszentrum für Hundetrainer GmbH &amp; Co. KG, Blanker Schlatt 15, 26197 Großenkneten</td>
+          </tr>
+          <tr>
+            <th>Projektbetrag</th>
+            <td><strong><span data-total="true">4.569,60 €</span> (brutto)</strong></td>
+          </tr>
+        </tbody></table>
+      </div>
+
+
+      <div class="unterschriften">
+        <div class="unterschrift-block">
+          <div class="unterschrift-linie"></div>
+          <p class="datum-ort">Ort, Datum / Auftragnehmer</p>
+        </div>
+
+        <div class="unterschrift-block">
+          <div class="unterschrift-linie"></div>
+          <p class="datum-ort">Ort, Datum / Auftraggeber</p>
+        </div>
+      </div>
+
+      <p class="hinweis">Bitte ein unterschriebenes Exemplar zurücksenden. Gültig bis <span data-date="+28days">31.03.2026</span> (4 Wochen).</p>
+    </article>
+  
+
+</body></html>
+
